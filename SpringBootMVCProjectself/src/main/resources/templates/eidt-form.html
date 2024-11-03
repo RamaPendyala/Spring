@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Item</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+
+<div class="container mt-5">
+    <h1>Edit Item</h1>
+    <form th:action="@{/update}" method="post" th:object="${restaurantModel}">
+        <div class="form-group">
+            <label for="itemName">Item Name:</label>
+            <input type="text" id="itemName" class="form-control" th:field="*{itemName}" required>
+        </div>
+
+        <div class="form-group">
+            <label for="description">Description:</label>
+            <textarea id="description" class="form-control" th:field="*{description}" rows="4" required></textarea>
+        </div>
+
+        <div class="form-group">
+            <label for="category">Category:</label>
+            <input type="text" id="category" class="form-control" th:field="*{category}" required>
+        </div>
+
+        <div class="form-group">
+            <label for="price">Price:</label>
+            <input type="number" id="price" class="form-control" th:field="*{price}" step="0.01" required>
+        </div>
+
+        <div class="form-group">
+            <label for="ingredients">Ingredients:</label>
+            <textarea id="ingredients" class="form-control" th:field="*{ingredients}" rows="4" required></textarea>
+        </div>
+
+        <div class="form-group">
+            <label for="spicinessLevel">Spiciness Level:</label>
+            <select id="spicinessLevel" class="form-control" th:field="*{spicinessLevel}" required>
+                <option value="Mild" th:selected="${restaurantModel.spicinessLevel == 'Mild'}">Mild</option>
+                <option value="Medium" th:selected="${restaurantModel.spicinessLevel == 'Medium'}">Medium</option>
+                <option value="Spicy" th:selected="${restaurantModel.spicinessLevel == 'Spicy'}">Spicy</option>
+                <option value="Very Spicy" th:selected="${restaurantModel.spicinessLevel == 'Very Spicy'}">Very Spicy</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="availability">Availability:</label>
+            <select id="availability" class="form-control" th:field="*{availability}" required>
+                <option value="Available" th:selected="${restaurantModel.availability == 'Available'}">Available</option>
+                <option value="Unavailable" th:selected="${restaurantModel.availability == 'Unavailable'}">Unavailable</option>
+            </select>
+        </div>
+
+        <button type="submit" class="btn btn-success">Save Changes</button>
+        <a href="#" th:href="@{/getitem}" class="btn btn-secondary">Cancel</a>
+    </form>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

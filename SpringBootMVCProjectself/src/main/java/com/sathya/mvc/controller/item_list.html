@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Restaurant Items</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container">
+    <h1>Restaurant Items</h1>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Item Name</th>
+                <th>Description</th>
+                <th>Category</th>
+                <th>Price</th>
+                <th>Ingredients</th>
+                <th>Spiciness Level</th>
+                <th>Availability</th>
+                <th>Visited On</th>
+                <th>Manager Name</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="item : ${items}">
+                <td th:text="${item.id}"></td>
+                <td th:text="${item.itemName}"></td>
+                <td th:text="${item.description}"></td>
+                <td th:text="${item.category}"></td>
+                <td th:text="${item.price}"></td>
+                <td th:text="${item.ingredients}"></td>
+                <td th:text="${item.spicinessLevel}"></td>
+                <td th:text="${item.availability}"></td>
+                <td th:text="${item.visitedOn}"></td>
+                <td th:text="${item.managerName}"></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>
